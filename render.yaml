@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: tradingview-webhooks-bot
+    env: python
+    buildCommand: "docker build -t tradingview-webhooks-bot ."
+    startCommand: "python3 src/tvwb.py start --host 0.0.0.0 --port 5000"
+    dockerfilePath: Dockerfile
+    healthCheckPath: /
+    ports:
+      - port: 5000
+        name: http
+        protocol: http
